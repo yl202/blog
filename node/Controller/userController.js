@@ -1,28 +1,29 @@
 const userModel = require('../Model/userModel');
+const { Result } = require('../Util/mySql')
 
-exports.handleLogin = async(req,res) =>{
-    let {username,password} = req.query
-    console.log(req.query)
-    // 注意：get的参数在query里面；post的参数在body里面
-    let data = await userModel.getUname(username);
-    console.log(data);
+exports.handleLogin = async (req, res) => {
+    let { username, password } = req.query;
+    let $data = await userModel.getUname(res, username);
+    console.log('username===', username, 'password===', password, 'data===', $data)
 
     // 判断用户名不能为空
-    if (username) {
-        res.send({msg:'用户名不能为空'})
-        return;
+    if (!username) {
+        console.log('用户名不能为空');
+        return res.send(new Result({ msg: '用户名不能为空' }))
     }
 
     // 判断用户是否存在
-    if(data.length === 0){
-        res.send({msg:'用户名不存在'})
+    if ($data.length === 0) {
+        console.log('用户名不存在');
+        return res.send(new Result({ msg: '用户名不存在' }))
     }
 
     // 判断密码是否正确
-    if(password != data[0].password){
-        res.send({msg:'密码错误！'})
+    if (password != $data[0].password) {
+        console.log('密码错误！');
+        return res.send(new Result({ msg: '密码错误' }))
     }
 
     // 登录成功
-    res.send({success:true,msg:'登陆成功！'})
+    return  res.send(new Result({ msg: '登录成功',data:$data }))
 }
