@@ -4,7 +4,6 @@ const { Result } = require('../Util/mySql')
 exports.handleLogin = async (req, res) => {
     let { username, password } = req.query;
     let $data = await userModel.getUname(res, username);
-    console.log('username===', username, 'password===', password, 'data===', $data)
 
     // 判断用户名不能为空
     if (!username) {
@@ -13,7 +12,7 @@ exports.handleLogin = async (req, res) => {
     }
 
     // 判断用户是否存在
-    if ($data.length === 0) {
+    if ($data.length === 0) { 
         console.log('用户名不存在');
         return res.send(new Result({ msg: '用户名不存在' }))
     }
@@ -26,4 +25,9 @@ exports.handleLogin = async (req, res) => {
 
     // 登录成功
     return  res.send(new Result({ msg: '登录成功',data:$data }))
+}
+
+exports.handleDelete = async (req,res) =>{
+    let {username,password} = req.body;
+    let $data = await userModel.getUname(res,username);
 }
