@@ -7,7 +7,4 @@ const userController = require('../Controller/userController');
 // 登录
 userRouter.get('/login', userController.handleLogin)
 
-// 删除
-userRouter.delete('delete',userController.handleDelete)
-
 module.exports = userRouter;

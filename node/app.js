@@ -5,8 +5,7 @@ const bodyParser = require('body-parser'); //解析参数用的
 const userRouter = require('./Router/userRouter');
 
 app.use(cors()); // 解决跨域
-app.use(bodyParser.json()) // json请求
-app.use(bodyParser.urlencoded({ extended: false })) // 表单请求
+app.use(bodyParser.json())
 app.all('*',(req,res,next) => {
     // 设置允许跨域的域名，*代表允许任意域名跨域
     res.header('Access-Control-Allow-Origin','*')
