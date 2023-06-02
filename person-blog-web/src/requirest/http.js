@@ -7,10 +7,10 @@
 import axios from 'axios';
 // 引入qs模块，对数据进行序列化
 import QS from 'qs';
-// 引入message模块，toast提示
-import { message } from 'ant-desgin-vue'
 // 引入storage模块，操作token
 import { session } from '@/utils/storage.js'
+// 引入message模块，toast提示
+import { ElMessage } from 'element-plus';
 
 // 请求超时时间
 axios.defaults.timeout = 1000;
@@ -46,13 +46,13 @@ axios.interceptors.response.use(
     if (error.response.status) {
       switch (error.response.status) {
         case 500:
-          message.error('网络错误，请稍后再试！')
+          ElMessage.error('网络错误，请稍后再试！')
           break
         case 404:
-          message.error('网络错误，请稍后再试！')
+          ElMessage.error('网络错误，请稍后再试！')
           break
         default:
-          message.error(error.response.data.message)
+          ElMessage.error(error.response.data.message)
       }
       return Promise.reject(error.response)
     }
