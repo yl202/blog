@@ -1,12 +1,37 @@
 <template>
-    <div>login template</div>
+    <div class="login-wrap">
+        <p class="font-S32 font-fa-cher text-c">
+            welcome to the world,it's suck,but u're gonna love it.
+        </p>
+        <div class="login-box">
+            <p class="font-fa-ZCOO font-S24 text-c">
+                Please select your entry method:
+            </p>
+            <div class="login-msg-box">
+                <span>账号：</span>
+                <inputEle :name="userMsg.input1"></inputEle>
+            </div>
+            <div class="login-msg-box">
+                <span>密码：</span>
+                <inputEle :name="userMsg.input2"></inputEle>
+            </div>
+            <!-- <loginCards></loginCards> -->
+        </div>
+    </div>
 </template>
 
 <script setup >
-import { onMounted } from "vue";
+import "@/assets/css/base.css";
+import { onMounted, ref } from "vue";
 // import { testPostApi, testGetApi, testGetDynamicApi } from "@/request/api.js";
-import {testGetApi } from "@/api/api.js";
+import { testGetApi } from "@/api/api.js";
+// import loginCards from "./effect/loginCards";
+import inputEle from "./effect/input-ele";
 
+const userMsg = ref({
+    input1: "account",
+    input2: "password",
+});
 // const testPostFun = async () => {
 //     const res = await testPostApi({ username: "admin", password: "admin" });
 //     console.log(res);
@@ -45,13 +70,30 @@ onMounted(() => {
 });
 </script>
 
-<style>
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+<style lang="scss" scoped>                                                                                                                                                                  
+.login-wrap {
+    width: 100%;
+    background: #dee6e7;
+    box-shadow: 0 0 20px #eee;
+    padding: 20px;
+    min-height: 500px;
+    position: relative;
+}
+.login-box {
+    width: 600px;
+    height: 400px;
+    position: absolute;
+    right: 100px;
+    top: 100px;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #c8cfd0, #eef6f7);
+    box-shadow: 11px 11px 23px #bac1c2, -11px -11px 23px #ffffff;
+}
+.login-msg-box {
+    position: flex;
+    justify-content: space-between;
+    span {
+        display: inline-block;
+    }
 }
 </style>

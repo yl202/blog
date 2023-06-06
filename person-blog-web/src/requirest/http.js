@@ -12,15 +12,21 @@ import { session } from '@/utils/storage.js'
 // 引入message模块，toast提示
 import { ElMessage } from 'element-plus';
 
-// 请求超时时间
-axios.defaults.timeout = 1000;
+// 环境的切换
+const { baseUrl } = require('../config/env.' + process.env.NODE_ENV);
+const service = axios.create({
+  baseURL: baseUrl, // url = base api url + request url
+  withCredentials: false, // send cookies when cross-domain requests
+  timeout: 1000 * 12 // 请求超时
+})
+
 
 // 请求拦截器
-axios.interceptors.request.use(
+service.interceptors.request.use(
   config => {
     // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
     // 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断
-    const token = session.get('Token')
+    const token = session.getSession('Token')
     token && (config.headers.Authorization = token)
     if (config.method.toUpperCase() === 'POST') {
       config.headers['Content-Type'] = 'application/json;charset=utf-8'
@@ -33,9 +39,9 @@ axios.interceptors.request.use(
 )
 
 // 响应拦截器
-axios.interceptors.response.use(
+service.interceptors.response.use(
   response => {
-    console.log(response)
+    // console.log(response)
     if (response.status === 200) {
       return Promise.resolve(response)
     } else {
@@ -66,7 +72,7 @@ axios.interceptors.response.use(
  */
 export function get(url, params) {
   return new Promise((resolve, reject) => {
-    axios.get(url, {
+    service.get(url, {
       params: params
     }).then(res => {
       resolve(res.data)
@@ -83,7 +89,7 @@ export function get(url, params) {
  */
 export function post(url, params) {
   return new Promise((resolve, reject) => {
-    axios.post(url,
+    service.post(url,
       QS.stringify(params))
       .then(res => {
         resolve(res.data)
@@ -101,7 +107,7 @@ export function post(url, params) {
 export function getDynamicynamic(url, params) {
   return new Promise((resolve, reject) => {
     const comleteUrl = `${url}/${params}`
-    axios.get(comleteUrl, {})
+    service.get(comleteUrl, {})
       .then(res => {
         resolve(res.data)
       })
@@ -117,7 +123,7 @@ export function getDynamicynamic(url, params) {
  */
 export function getFileUseBlobByPost(url, params = {}) {
   return new Promise((resolve, reject) => {
-    axios({
+    service({
       method: 'post',
       url,
       data: params,

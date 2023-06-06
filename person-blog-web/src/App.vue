@@ -1,7 +1,4 @@
 <template>
-  <div>
-    welcome to the world,it's suck,but u're gonna love it.
-  </div>
   <login></login>
 </template>
 
@@ -24,6 +21,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
