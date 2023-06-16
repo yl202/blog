@@ -1,0 +1,56 @@
+/* 
+  string                  Font Format                       Common extensions
+  "woff"                  WOFF1.0(Web Open Font Format)     .woff
+  "woff2"                 WOFF2.0(Web Open Font Format)     .woff
+  "truetype"              TrueType                          .ttf
+  "opentype"              OpenType                          .ttf,.otf
+  "embedded-opentype"     Embedded OpenType                 .ttf
+  "svg"                   SVG Font                          .svg,.svgz
+ */
+@font-face {
+  font-family: "Noto Sans SC";
+  src:
+    url("../../assets/fonts/Noto_Sans_SC/NotoSansSC-Thin.otf") format("OpenType"),
+    url("../../assets/fonts/Noto_Sans_SC/NotoSansSC-Medium.otf") format("OpenType"),
+    url("../../assets/fonts/Noto_Sans_SC/NotoSansSC-Light.otf") format("OpenType"),
+    url("../../assets/fonts/Noto_Sans_SC/NotoSansSC-Black.otf") format("OpenType"),
+    url("../../assets/fonts/Noto_Sans_SC/NotoSansSC-Bold.otf") format("OpenType"),
+    url("../../assets/fonts/Noto_Sans_SC/NotoSansSC-Regular.otf") format("OpenType");
+}
+
+@font-face {
+  font-family: "Noto Sans TC";
+  src:
+    url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Black.otf") format("OpenType"),
+    url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Bold.otf") format("OpenType"),
+    url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-ExtraLight.otf") format("OpenType"),
+    url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Light.otf") format("OpenType"),
+    url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Medium.otf") format("OpenType"),
+    url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-SemiBold.otf") format("OpenType"),
+    url("../../assets/fonts/Noto_Serif_TC/NotoSerifTC-Regular.otf") format("OpenType");
+}
+
+@font-face {
+  font-family: "ZCOOLXiaoWei";
+  src: url("../../assets/fonts/ZCOOL_XiaoWei/ZCOOLXiaoWei-Regular.ttf") format("OpenType");
+}
+
+@font-face {
+  font-family: "CherryBombOne";
+  src: url("../../assets/fonts/Cherry_Bomb_One/CherryBombOne-Regular.ttf") format("OpenType");
+}
+
+@font-face {
+  font-family: "Chokokutai";
+  src: url("../../assets/fonts/Chokokutai/Chokokutai-Regular.ttf") format("OpenType");
+}
+
+@font-face {
+  font-family: "Geologica";
+  src: url("../../assets/fonts/Geologica/Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf") format("OpenType");
+}
+
+@font-face {
+  font-family: "Chokokutai";
+  src: url("../../assets/fonts/Chokokutai/Chokokutai-Regular.ttf") format("OpenType");
+}

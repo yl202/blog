@@ -10,7 +10,7 @@
 <script setup>
   import { toRefs,defineProps }from 'vue'
   const props = defineProps ({
-    // 子组件接收富足家传过来的值
+    // 子组件接收父组件传过来的值
     name:String,
   })
   // 使用父组件传递来的值
@@ -20,7 +20,7 @@
 
 <style scope>
 .input-container {
-    width: 100px;
+    width: 200px;
     position: relative;
     margin: 20px;
 }
